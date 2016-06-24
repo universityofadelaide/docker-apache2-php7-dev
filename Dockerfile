@@ -1,4 +1,4 @@
-FROM uofa/docker_apache2_php7
+FROM uofa/apache2-php7
 
 # Upgrade all currently installed packages and install web server packages.
 RUN apt-get update \
