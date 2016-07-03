@@ -8,4 +8,6 @@ RUN apt update \
 COPY ./files/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
 
 # Configure apache modules, php modules, error logging.
-RUN phpenmod -v ALL -s ALL xdebug
+RUN phpenmod -v ALL -s ALL xdebug \
+&& sed -ri 's/^zend.assertions\s*=\s*-1/zend.assertions = 1/g' /etc/php/7.0/cli/php.ini
+
