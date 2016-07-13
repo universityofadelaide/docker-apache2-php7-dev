@@ -2,7 +2,7 @@ FROM uofa/apache2-php7
 
 # Upgrade all currently installed packages and install web server packages.
 RUN apt update \
-&& apt-get -y install php-xdebug php7.0-cli git \
+&& apt-get -y install php-xdebug php7.0-cli git wget \
 && apt-get -y autoremove && apt-get -y autoclean && apt-get clean && rm -rf /var/lib/apt/lists /tmp/* /var/tmp/*
 
 # Get robo
