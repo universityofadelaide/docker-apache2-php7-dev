@@ -1,9 +1,9 @@
-FROM uofa/docker_apache2_php7
+FROM uofa/apache2-php7
 
 # Upgrade all currently installed packages and install web server packages.
-RUN apt-get update \
-&& apt-get -y install php-xdebug php7.0-cli \
-&& apt-get -y autoremove && apt-get -y autoclean && apt-get clean && rm -rf /var/lib/apt /tmp/* /var/tmp/*
+RUN apt update \
+&& apt-get -y install php-xdebug php7.0-cli git \
+&& apt-get -y autoremove && apt-get -y autoclean && apt-get clean && rm -rf /var/lib/apt/lists /tmp/* /var/tmp/*
 
 # Get robo
 RUN wget -O /usr/local/bin/robo http://robo.li/robo.phar && chmod +x /usr/local/bin/robo
