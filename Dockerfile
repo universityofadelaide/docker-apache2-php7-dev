@@ -5,6 +5,9 @@ RUN apt-get update \
 && apt-get -y install php-xdebug php7.0-cli \
 && apt-get -y autoremove && apt-get -y autoclean && apt-get clean && rm -rf /var/lib/apt /tmp/* /var/tmp/*
 
+# Get robo
+RUN wget -O /usr/local/bin/robo http://robo.li/robo.phar && chmod +x /usr/local/bin/robo
+
 COPY ./files/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
 
 # Configure apache modules, php modules, error logging.
