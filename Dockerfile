@@ -9,6 +9,9 @@ RUN apt update \
 # Get robo.
 RUN wget -O /usr/local/bin/robo https://github.com/consolidation/Robo/releases/download/1.0.4/robo.phar && chmod +x /usr/local/bin/robo
 
+# Install Composer.
+RUN wget -q https://getcomposer.org/installer -O - | php -- --install-dir=/usr/local/bin --filename=composer
+
 COPY ./files/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
 
 # Configure apache modules, php modules, error logging.
