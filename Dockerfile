@@ -18,6 +18,7 @@ RUN wget -O /usr/local/bin/robo https://github.com/consolidation/Robo/releases/d
 RUN wget -q https://getcomposer.org/installer -O - | php -d allow_url_fopen=On -- --install-dir=/usr/local/bin --filename=composer
 
 COPY ./files/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
+COPY ./files/tideways.ini /etc/php/7.0/mods-available/tideways.ini
 
 # Configure apache modules, php modules, error logging.
 RUN phpenmod -v ALL -s ALL xdebug
