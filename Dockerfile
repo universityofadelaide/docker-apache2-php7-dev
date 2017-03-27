@@ -1,4 +1,4 @@
-FROM uofa/apache2-php7
+FROM uofa/apache2-php7:shepherd
 
 # Add tideways repo
 RUN echo 'deb http://s3-eu-west-1.amazonaws.com/qafoo-profiler/packages debian main' > /etc/apt/sources.list.d/tideways.list
@@ -20,5 +20,5 @@ RUN wget -q https://getcomposer.org/installer -O - | php -d allow_url_fopen=On -
 COPY ./files/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
 COPY ./files/tideways.ini /etc/php/7.0/mods-available/tideways.ini
 
-# Configure apache modules, php modules, error logging.
+# Enable xdebug.
 RUN phpenmod -v ALL -s ALL xdebug
