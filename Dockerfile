@@ -1,6 +1,6 @@
 FROM uofa/apache2-php7:shepherd
 
-# Add tideways repo
+# Add tideways repo.
 RUN echo 'deb http://s3-eu-west-1.amazonaws.com/qafoo-profiler/packages debian main' > /etc/apt/sources.list.d/tideways.list
 
 # Upgrade all currently installed packages and install web server packages.
