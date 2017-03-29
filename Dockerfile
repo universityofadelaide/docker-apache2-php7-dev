@@ -9,6 +9,7 @@ RUN apt-get update \
 && wget -O - https://s3-eu-west-1.amazonaws.com/qafoo-profiler/packages/EEB5E8F4.gpg | sudo apt-key add - \
 && apt-get -y --allow-unauthenticated install tideways-php tideways-cli \
 && sed -ri 's/^zend.assertions\s*=\s*-1/zend.assertions = 1/g' /etc/php/7.0/cli/php.ini \
+&& sed -i 's/^\(allow_url_fopen\s*=\s*\).*$/\1on/g' /etc/php/7.0/mods-available/php_custom.ini \
 && apt-get -y autoremove && apt-get -y autoclean && apt-get clean && rm -rf /var/lib/apt/lists /tmp/* /var/tmp/*
 
 # Get robo.
@@ -17,6 +18,7 @@ RUN wget -O /usr/local/bin/robo https://github.com/consolidation/Robo/releases/d
 # Install Composer.
 RUN wget -q https://getcomposer.org/installer -O - | php -d allow_url_fopen=On -- --install-dir=/usr/local/bin --filename=composer
 
+# Configure additional PHP modules.
 COPY ./files/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
 COPY ./files/tideways.ini /etc/php/7.0/mods-available/tideways.ini
 
