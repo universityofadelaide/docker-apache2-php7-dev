@@ -13,7 +13,7 @@ RUN apt-get update \
 && apt-get -y autoremove && apt-get -y autoclean && apt-get clean && rm -rf /var/lib/apt/lists /tmp/* /var/tmp/*
 
 # Get robo.
-RUN wget -O /usr/local/bin/robo https://github.com/consolidation/Robo/releases/download/1.0.4/robo.phar && chmod +x /usr/local/bin/robo
+RUN wget -O /usr/local/bin/robo https://github.com/consolidation/Robo/releases/download/1.0.8/robo.phar && chmod +x /usr/local/bin/robo
 
 # Install Composer.
 RUN wget -q https://getcomposer.org/installer -O - | php -d allow_url_fopen=On -- --install-dir=/usr/local/bin --filename=composer
