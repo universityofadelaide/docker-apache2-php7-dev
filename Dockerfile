@@ -26,4 +26,4 @@ COPY ./files/tideways.ini /etc/php/7.0/mods-available/tideways.ini
 RUN phpenmod -v ALL -s ALL xdebug
 
 # Add a whale to the PS1 to avoid shell confusion.
-RUN echo 'PS1="🐳 ${PS1}"' | tee -a /etc/skel/.bashrc | tee -a /root/.bashrc > /dev/null
+RUN echo "WHALE='\['\"\`tput sc\`\"'\]     \['\"\`tput rc\`\"'🐳\]'" && echo "PS1=\"${WHALE} ${PS1}\"" && echo "PATH=${PATH}:/code/bin" | tee -a /etc/skel/.bashrc | tee -a /root/.bashrc > /dev/null
